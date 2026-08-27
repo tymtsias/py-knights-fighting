@@ -8,17 +8,11 @@ from app.items.equipment.weapon.weapon import Weapon
 class Knight:
     def __init__(
         self,
-        name: str,
-        power: int,
-        hp: int,
-        armour: list[Armour],
-        weapon: Weapon,
-        potion: Potion,
+        data : dict,
     ) -> None:
-        self.name = name
-        self.power = power
-        self.hp = hp
-        self.armour = armour
-        self.weapon = weapon
-        self.potion = potion
-        self.protection = 0
+        self.name = data["name"]
+        self.power = data["power"]
+        self.hp = data["hp"]
+        self.armour = [Armour(item) for item in data["armour"]]
+        self.weapon = Weapon(data["weapon"])
+        self.potion = Potion(data["potion"])
